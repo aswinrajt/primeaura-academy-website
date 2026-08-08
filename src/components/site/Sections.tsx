@@ -19,13 +19,12 @@ import {
   GraduationCap,
   Check,
   CalendarCheck,
-  MessageCircle,
   Globe,
 } from "lucide-react";
 import heroIllustration from "@/assets/hero-illustration.png";
 import logo from "@/assets/logo.png";
 
-import { CtaButtons, SectionHeading, PHONES, WHATSAPP_URL, tel } from "./Cta";
+import { CtaButtons, SectionHeading, PHONES, WHATSAPP_URL, tel, WhatsAppIcon } from "./Cta";
 
 
 
@@ -422,7 +421,7 @@ export function Modes() {
                       : "border-border hover:border-gold hover:bg-secondary"
                   }`}
                 >
-                  <MessageCircle className="h-4 w-4" />
+                  <WhatsAppIcon className="h-4 w-4" />
                   WhatsApp Us
                 </a>
               </div>
@@ -467,7 +466,7 @@ export function DemoCta() {
                 rel="noreferrer"
                 className="bg-gold text-gold-foreground inline-flex w-full items-center justify-center gap-2 rounded-full px-7 py-3.5 text-[0.95rem] font-semibold shadow-[var(--shadow-gold)] transition-transform duration-300 hover:-translate-y-0.5 sm:w-auto"
               >
-                <MessageCircle className="h-4 w-4" />
+                <WhatsAppIcon className="h-4 w-4" />
                 Book Free Demo on WhatsApp
               </a>
               <a
@@ -580,7 +579,7 @@ export function Footer() {
                 rel="noreferrer"
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-current/30 px-5 py-2.5 text-sm font-semibold transition-colors hover:border-current"
               >
-                <MessageCircle className="h-4 w-4" />
+                <WhatsAppIcon className="h-4 w-4" />
                 WhatsApp Us
               </a>
             </div>
