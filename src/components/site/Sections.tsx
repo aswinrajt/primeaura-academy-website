@@ -449,28 +449,83 @@ export function Contact() {
 export function Footer() {
   return (
     <footer className="surface-navy">
-      <div className="mx-auto grid max-w-6xl gap-6 px-5 py-10 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center lg:px-8">
-        <div className="flex min-w-0 items-center gap-3">
-          <img
-            src={logo.url}
-            alt="PrimeAura Academy logo"
-            width={44}
-            height={44}
-            loading="lazy"
-            className="h-11 w-11 shrink-0 rounded-full"
-          />
-          <div className="min-w-0">
-            <p className="truncate font-semibold">
-              Prime<span className="text-gold">Aura</span> Academy
+      <div className="mx-auto max-w-6xl px-5 py-12 lg:px-8">
+        <div className="grid gap-8 sm:grid-cols-[minmax(0,1.2fr)_auto] sm:items-start">
+          <div className="flex min-w-0 items-center gap-3">
+            <img
+              src={logo.url}
+              alt="PrimeAura Academy logo"
+              width={44}
+              height={44}
+              loading="lazy"
+              className="h-11 w-11 shrink-0 rounded-full"
+            />
+            <div className="min-w-0">
+              <p className="truncate font-semibold">
+                Prime<span className="text-gold">Aura</span> Academy
+              </p>
+              <p className="text-[0.8rem] opacity-75">Learn. Understand. Excel.</p>
+              <p className="mt-2 text-[0.8rem] opacity-75">
+                Online classes anywhere · Offline classes in Calicut only
+              </p>
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-3 sm:items-end">
+            <div className="flex flex-wrap gap-2.5">
+              <a
+                href="#demo"
+                className="bg-gold text-gold-foreground inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold"
+              >
+                <CalendarCheck className="h-4 w-4" />
+                Book Free Demo
+              </a>
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-current/30 px-5 py-2.5 text-sm font-semibold transition-colors hover:border-current"
+              >
+                <MessageCircle className="h-4 w-4" />
+                WhatsApp Us
+              </a>
+            </div>
+            <p className="text-[0.8rem] opacity-75">
+              {PHONES.map((p, i) => (
+                <span key={p}>
+                  {i > 0 && " · "}
+                  <a href={tel(p)} className="hover:underline">
+                    {p}
+                  </a>
+                </span>
+              ))}
             </p>
-            <p className="text-[0.8rem] opacity-75">Learn. Understand. Excel.</p>
           </div>
         </div>
-        <p className="text-[0.8rem] opacity-70">
-          © {new Date().getFullYear()} PrimeAura Academy. All rights reserved.
-        </p>
+
+        <div className="mt-8 flex flex-col gap-3 border-t border-current/15 pt-6 sm:flex-row sm:items-center sm:justify-between">
+          <ul className="flex flex-wrap gap-x-5 gap-y-2 text-[0.82rem] opacity-80">
+            {[
+              ["Home", "#home"],
+              ["Classes", "#classes"],
+              ["Mentors", "#mentors"],
+              ["About", "#about"],
+              ["Contact", "#contact"],
+            ].map(([label, href]) => (
+              <li key={href}>
+                <a href={href} className="hover:text-gold transition-colors">
+                  {label}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <p className="text-[0.8rem] opacity-70">
+            © {new Date().getFullYear()} PrimeAura Academy. All rights reserved.
+          </p>
+        </div>
       </div>
     </footer>
   );
 }
+
 
