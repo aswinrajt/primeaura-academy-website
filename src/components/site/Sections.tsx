@@ -446,21 +446,29 @@ export function Contact() {
 
 export function Footer() {
   return (
-    <footer className="border-border border-t py-10">
-      <div className="mx-auto grid max-w-6xl gap-6 px-5 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center lg:px-8">
+    <footer className="surface-navy">
+      <div className="mx-auto grid max-w-6xl gap-6 px-5 py-10 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center lg:px-8">
         <div className="flex min-w-0 items-center gap-3">
-          <span className="surface-navy grid h-9 w-9 shrink-0 place-items-center rounded-lg">
-            <GraduationCap className="text-gold h-4 w-4" strokeWidth={1.75} />
-          </span>
+          <img
+            src={logo.url}
+            alt="PrimeAura Academy logo"
+            width={44}
+            height={44}
+            loading="lazy"
+            className="h-11 w-11 shrink-0 rounded-full"
+          />
           <div className="min-w-0">
-            <p className="truncate font-semibold">PrimeAura Academy</p>
-            <p className="text-muted-foreground text-sm">Learn. Understand. Excel.</p>
+            <p className="truncate font-semibold">
+              Prime<span className="text-gold">Aura</span> Academy
+            </p>
+            <p className="text-[0.8rem] opacity-75">Learn. Understand. Excel.</p>
           </div>
         </div>
-        <p className="text-muted-foreground text-sm">
+        <p className="text-[0.8rem] opacity-70">
           © {new Date().getFullYear()} PrimeAura Academy. All rights reserved.
         </p>
       </div>
     </footer>
   );
 }
+
