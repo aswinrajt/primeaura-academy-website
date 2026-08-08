@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Navbar } from "@/components/site/Navbar";
+import { MobileCtaBar } from "@/components/site/Cta";
 import {
   Hero,
   WhyChoose,
@@ -29,7 +30,7 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <div className="bg-background min-h-screen">
+    <div className="bg-background min-h-screen pb-20 lg:pb-0">
       <Navbar />
       <main>
         <Hero />
@@ -41,6 +42,7 @@ function Index() {
         <Contact />
       </main>
       <Footer />
+      <MobileCtaBar />
     </div>
   );
 }

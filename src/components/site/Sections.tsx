@@ -22,6 +22,8 @@ import {
   Check,
 } from "lucide-react";
 import heroIllustration from "@/assets/hero-illustration.png";
+import logo from "@/assets/primeaura-logo.png.asset.json";
+
 import { CtaButtons, SectionHeading, PHONES, WHATSAPP_URL } from "./Cta";
 
 
