@@ -21,8 +21,9 @@ import {
   GraduationCap,
   Check,
 } from "lucide-react";
-import heroImage from "@/assets/hero-study.jpg";
+import heroIllustration from "@/assets/hero-illustration.png";
 import { CtaButtons, SectionHeading, PHONES, WHATSAPP_URL } from "./Cta";
+
 
 export function Hero() {
   return (
