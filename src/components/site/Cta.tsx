@@ -1,7 +1,8 @@
 import { MessageCircle, CalendarCheck } from "lucide-react";
 
 export const PHONES: [string, string] = ["96057 66178", "73563 47117"];
-export const WHATSAPP_URL = "https://wa.me/919605766178?text=Hi%20PrimeAura%2C%20I%27d%20like%20to%20book%20a%20free%20demo%20class.";
+export const WHATSAPP_URL =
+  "https://wa.me/919605766178?text=Hi%20PrimeAura%2C%20I%27d%20like%20to%20book%20a%20free%20demo%20class.";
 
 export function CtaButtons({
   size = "md",
@@ -14,8 +15,8 @@ export function CtaButtons({
   only?: "demo" | "whatsapp";
   inverted?: boolean;
 }) {
-  const pad = size === "sm" ? "px-4 py-2.5 text-sm" : "px-6 py-3.5 text-[0.95rem]";
-  const base = `inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-300 ${pad} ${
+  const pad = size === "sm" ? "px-5 py-2.5 text-sm" : "px-7 py-3.5 text-[0.95rem]";
+  const base = `group inline-flex items-center justify-center gap-2 rounded-full font-semibold tracking-tight transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${pad} ${
     full ? "w-full" : ""
   }`;
 
@@ -23,9 +24,16 @@ export function CtaButtons({
     <a
       key="demo"
       href="#demo"
-      className={`${base} bg-primary text-primary-foreground hover:shadow-[var(--shadow-lift)] hover:-translate-y-0.5`}
+      className={`${base} ${
+        inverted
+          ? "bg-gold text-gold-foreground shadow-[var(--shadow-gold)] hover:-translate-y-0.5"
+          : "bg-primary text-primary-foreground shadow-[var(--shadow-soft)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-lift)]"
+      }`}
     >
-      <CalendarCheck className="h-4 w-4" strokeWidth={2} />
+      <CalendarCheck
+        className="h-4 w-4 transition-transform duration-300 group-hover:scale-110"
+        strokeWidth={2}
+      />
       Book Free Demo
     </a>
   );
@@ -38,11 +46,14 @@ export function CtaButtons({
       rel="noreferrer"
       className={`${base} ${
         inverted
-          ? "bg-gold text-gold-foreground hover:-translate-y-0.5"
-          : "border-border text-foreground hover:border-gold hover:bg-accent border bg-transparent"
+          ? "border border-current/30 hover:border-current"
+          : "border-border text-foreground hover:border-gold hover:bg-secondary border bg-transparent hover:-translate-y-0.5"
       }`}
     >
-      <MessageCircle className="h-4 w-4" strokeWidth={2} />
+      <MessageCircle
+        className="h-4 w-4 transition-transform duration-300 group-hover:scale-110"
+        strokeWidth={2}
+      />
       WhatsApp Us
     </a>
   );
@@ -71,12 +82,40 @@ export function SectionHeading({
 }) {
   return (
     <div className={`max-w-2xl ${centered ? "mx-auto text-center" : ""}`}>
-      <p className="text-muted-foreground text-xs font-semibold tracking-[0.22em] uppercase">
-        {eyebrow}
-      </p>
+      <p className="eyebrow">{eyebrow}</p>
       <div className={`rule-gold mt-4 ${centered ? "mx-auto" : ""}`} />
-      <h2 className="mt-5 text-3xl leading-tight sm:text-4xl">{title}</h2>
-      {subtitle && <p className="text-muted-foreground mt-4 text-base leading-relaxed">{subtitle}</p>}
+      <h2 className="mt-5 text-[1.75rem] leading-[1.15] sm:text-4xl">{title}</h2>
+      {subtitle && (
+        <p className="text-muted-foreground mt-4 text-[0.95rem] leading-relaxed sm:text-base">
+          {subtitle}
+        </p>
+      )}
+    </div>
+  );
+}
+
+/** Mobile-only sticky conversion bar. */
+export function MobileCtaBar() {
+  return (
+    <div className="border-border bg-background/90 fixed inset-x-0 bottom-0 z-50 border-t px-4 pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] backdrop-blur-xl lg:hidden">
+      <div className="grid grid-cols-2 gap-2.5">
+        <a
+          href="#demo"
+          className="bg-primary text-primary-foreground inline-flex items-center justify-center gap-2 rounded-full px-4 py-3 text-sm font-semibold"
+        >
+          <CalendarCheck className="h-4 w-4" />
+          Free Demo
+        </a>
+        <a
+          href={WHATSAPP_URL}
+          target="_blank"
+          rel="noreferrer"
+          className="bg-gold text-gold-foreground inline-flex items-center justify-center gap-2 rounded-full px-4 py-3 text-sm font-semibold"
+        >
+          <MessageCircle className="h-4 w-4" />
+          WhatsApp
+        </a>
+      </div>
     </div>
   );
 }
