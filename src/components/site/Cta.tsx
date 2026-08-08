@@ -1,6 +1,6 @@
 import { MessageCircle, CalendarCheck } from "lucide-react";
 
-export const PHONES = ["96057 66178", "73563 47117"];
+export const PHONES: [string, string] = ["96057 66178", "73563 47117"];
 export const WHATSAPP_URL = "https://wa.me/919605766178?text=Hi%20PrimeAura%2C%20I%27d%20like%20to%20book%20a%20free%20demo%20class.";
 
 export function CtaButtons({
