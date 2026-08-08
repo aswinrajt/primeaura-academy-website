@@ -161,20 +161,25 @@ const reasons = [
 
 export function WhyChoose() {
   return (
-    <section id="about" className="py-20 lg:py-28">
+    <section id="about" className="py-16 sm:py-20 lg:py-28">
       <div className="mx-auto max-w-6xl px-5 lg:px-8">
         <SectionHeading
           eyebrow="Why PrimeAura"
           title="A calmer, sharper way to learn"
           subtitle="Everything we do is built around one goal — students who genuinely understand what they study."
         />
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {reasons.map(({ icon: Icon, title, text }) => (
-            <article key={title} className="card-premium p-7">
-              <span className="bg-secondary grid h-11 w-11 place-items-center rounded-xl">
-                <Icon className="text-primary h-5 w-5" strokeWidth={1.75} />
-              </span>
-              <h3 className="mt-5 text-lg">{title}</h3>
+        <div className="mt-10 grid gap-4 sm:mt-14 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
+          {reasons.map(({ icon: Icon, title, text }, i) => (
+            <article key={title} className="card-premium p-6 sm:p-7">
+              <div className="flex items-center justify-between gap-3">
+                <span className="surface-navy grid h-11 w-11 place-items-center rounded-2xl">
+                  <Icon className="text-gold h-5 w-5" strokeWidth={1.75} />
+                </span>
+                <span className="text-muted-foreground/40 font-display text-2xl leading-none font-semibold">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+              </div>
+              <h3 className="mt-5 text-[1.05rem] sm:text-lg">{title}</h3>
               <p className="text-muted-foreground mt-2.5 text-sm leading-relaxed">{text}</p>
             </article>
           ))}
@@ -198,20 +203,26 @@ const subjects = [
 
 export function Classes() {
   return (
-    <section id="classes" className="bg-secondary/50 py-20 lg:py-28">
+    <section
+      id="classes"
+      className="border-border bg-secondary/40 border-y py-16 sm:py-20 lg:py-28"
+    >
       <div className="mx-auto max-w-6xl px-5 lg:px-8">
         <SectionHeading
           eyebrow="Classes & Subjects"
           title="Classes 1–10, Plus One and Plus Two"
           subtitle="Kerala State Board and CBSE syllabuses, taught by mentors who specialise in each subject."
         />
-        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid grid-cols-2 gap-3 sm:mt-14 sm:gap-4 lg:grid-cols-3">
           {subjects.map(({ icon: Icon, name }) => (
-            <div key={name} className="card-premium flex items-center gap-4 p-5">
-              <span className="bg-accent grid h-11 w-11 shrink-0 place-items-center rounded-xl">
+            <div
+              key={name}
+              className="card-premium flex items-center gap-3 p-4 sm:gap-4 sm:p-5"
+            >
+              <span className="bg-accent grid h-10 w-10 shrink-0 place-items-center rounded-xl sm:h-11 sm:w-11">
                 <Icon className="text-accent-foreground h-5 w-5" strokeWidth={1.75} />
               </span>
-              <p className="min-w-0 truncate font-medium">{name}</p>
+              <p className="min-w-0 truncate text-[0.85rem] font-semibold sm:text-base">{name}</p>
             </div>
           ))}
         </div>
@@ -232,22 +243,24 @@ const mentors = [
 
 export function Mentors() {
   return (
-    <section id="mentors" className="py-20 lg:py-28">
+    <section id="mentors" className="py-16 sm:py-20 lg:py-28">
       <div className="mx-auto max-w-6xl px-5 lg:px-8">
         <SectionHeading
           eyebrow="Mentors"
           title="The people behind every class"
           subtitle="Mentor profiles are placeholders and can be updated with real names, photos and details anytime."
         />
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 grid grid-cols-2 gap-4 sm:mt-14 sm:gap-5 lg:grid-cols-4">
           {mentors.map((m, i) => (
-            <article key={i} className="card-premium p-6 text-center">
-              <div className="bg-secondary border-border mx-auto grid h-20 w-20 place-items-center rounded-full border border-dashed">
-                <UserRoundCheck className="text-muted-foreground h-7 w-7" strokeWidth={1.5} />
+            <article key={i} className="card-premium p-5 text-center sm:p-6">
+              <div className="border-gold/40 bg-secondary mx-auto grid h-16 w-16 place-items-center rounded-full border border-dashed sm:h-20 sm:w-20">
+                <UserRoundCheck className="text-muted-foreground h-6 w-6 sm:h-7 sm:w-7" strokeWidth={1.5} />
               </div>
-              <h3 className="mt-5 text-lg">{m.name}</h3>
+              <h3 className="mt-4 text-[0.98rem] sm:mt-5 sm:text-lg">{m.name}</h3>
               <p className="text-muted-foreground mt-1 text-sm">{m.subject}</p>
-              <p className="text-muted-foreground/70 mt-4 text-xs">Profile details coming soon</p>
+              <p className="text-muted-foreground/70 mt-3 text-[0.7rem] sm:mt-4 sm:text-xs">
+                Profile details coming soon
+              </p>
             </article>
           ))}
         </div>
@@ -255,6 +268,7 @@ export function Mentors() {
     </section>
   );
 }
+
 
 const modes = [
   {
