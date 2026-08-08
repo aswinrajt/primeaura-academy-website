@@ -1,8 +1,15 @@
 import { MessageCircle, CalendarCheck } from "lucide-react";
 
 export const PHONES: [string, string] = ["96057 66178", "73563 47117"];
-export const WHATSAPP_URL =
-  "https://wa.me/919605766178?text=Hi%20PrimeAura%2C%20I%27d%20like%20to%20book%20a%20free%20demo%20class.";
+export const tel = (p: string) => `tel:+91${p.replace(/\s/g, "")}`;
+
+const DEMO_MSG = encodeURIComponent(
+  "Hi PrimeAura Academy, I'd like to book a free demo class.",
+);
+export const waLink = (phone: string) =>
+  `https://wa.me/91${phone.replace(/\s/g, "")}?text=${DEMO_MSG}`;
+export const WHATSAPP_URL = waLink(PHONES[0]);
+
 
 export function CtaButtons({
   size = "md",
