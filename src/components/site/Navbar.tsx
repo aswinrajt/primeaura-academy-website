@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import logo from "@/assets/primeaura-logo.png.asset.json";
+import logo from "@/assets/logo.png";
 import { CtaButtons } from "./Cta";
 
 const links = [
@@ -33,7 +33,7 @@ export function Navbar() {
       <nav className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 py-3 lg:px-8 lg:py-4">
         <a href="#home" className="flex min-w-0 items-center gap-2.5">
           <img
-            src={logo.url}
+            src={logo}
             alt="PrimeAura Academy logo"
             width={44}
             height={44}

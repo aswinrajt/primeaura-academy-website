@@ -23,7 +23,7 @@ import {
   Globe,
 } from "lucide-react";
 import heroIllustration from "@/assets/hero-illustration.png";
-import logo from "@/assets/primeaura-logo.png.asset.json";
+import logo from "@/assets/logo.png";
 
 import { CtaButtons, SectionHeading, PHONES, WHATSAPP_URL, tel } from "./Cta";
 
@@ -547,7 +547,7 @@ export function Footer() {
         <div className="grid gap-8 sm:grid-cols-[minmax(0,1.2fr)_auto] sm:items-start">
           <div className="flex min-w-0 items-center gap-3">
             <img
-              src={logo.url}
+              src={logo}
               alt="PrimeAura Academy logo"
               width={44}
               height={44}
