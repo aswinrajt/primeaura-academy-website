@@ -115,7 +115,7 @@ export function Hero() {
             </div>
           </div>
 
-          <div className="border-border bg-card absolute -bottom-5 left-2 rounded-2xl border p-3.5 shadow-[var(--shadow-soft)] sm:left-6 sm:p-4">
+          <div className="border-border bg-card absolute -bottom-5 left-2 hidden rounded-2xl border p-3.5 shadow-[var(--shadow-soft)] sm:left-6 sm:block sm:p-4">
             <p className="eyebrow">Free</p>
             <p className="mt-1 text-[0.82rem] font-semibold sm:text-sm">
               Demo class for every new student
