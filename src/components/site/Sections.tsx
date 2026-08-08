@@ -20,11 +20,15 @@ import {
   Clock,
   GraduationCap,
   Check,
+  CalendarCheck,
+  MessageCircle,
+  Globe,
 } from "lucide-react";
 import heroIllustration from "@/assets/hero-illustration.png";
 import logo from "@/assets/primeaura-logo.png.asset.json";
 
-import { CtaButtons, SectionHeading, PHONES, WHATSAPP_URL } from "./Cta";
+import { CtaButtons, SectionHeading, PHONES, WHATSAPP_URL, tel } from "./Cta";
+
 
 
 export function Hero() {
@@ -72,9 +76,21 @@ export function Hero() {
             ))}
           </div>
 
-          <div className="mt-8 flex justify-center lg:justify-start">
+          <div className="text-muted-foreground mt-5 flex flex-wrap justify-center gap-x-4 gap-y-1.5 text-[0.82rem] font-medium lg:justify-start">
+            <span className="inline-flex items-center gap-1.5">
+              <Globe className="text-gold h-4 w-4" />
+              Online — available anywhere
+            </span>
+            <span className="inline-flex items-center gap-1.5">
+              <MapPin className="text-gold h-4 w-4" />
+              Offline — Calicut only
+            </span>
+          </div>
+
+          <div className="mt-7 flex justify-center lg:justify-start">
             <CtaButtons />
           </div>
+
 
           <dl className="border-border mt-10 grid grid-cols-3 gap-3 border-t pt-6 text-center lg:text-left">
             {[
@@ -237,10 +253,16 @@ export function Classes() {
 }
 
 const mentors = [
-  { name: "Mentor Name", subject: "Subject" },
-  { name: "Mentor Name", subject: "Subject" },
-  { name: "Mentor Name", subject: "Subject" },
-  { name: "Mentor Name", subject: "Subject" },
+  { name: "Mentor Name", subject: "Subject · Classes" },
+  { name: "Mentor Name", subject: "Subject · Classes" },
+  { name: "Mentor Name", subject: "Subject · Classes" },
+  { name: "Mentor Name", subject: "Subject · Classes" },
+];
+
+const mentorPromises = [
+  "Every class is taken by a subject mentor, not a substitute",
+  "Small batches so each student gets time to ask questions",
+  "You meet the mentor in the free demo before you decide",
 ];
 
 export function Mentors() {
@@ -250,21 +272,41 @@ export function Mentors() {
         <SectionHeading
           eyebrow="Mentors"
           title="The people behind every class"
-          subtitle="Mentor profiles are placeholders and can be updated with real names, photos and details anytime."
+          subtitle="Mentor profiles are placeholders for now and can be updated with real names, photos and details anytime."
         />
-        <div className="mt-10 grid grid-cols-2 gap-4 sm:mt-14 sm:gap-5 lg:grid-cols-4">
+
+        <ul className="mx-auto mt-8 grid max-w-3xl gap-3 sm:mt-10 sm:grid-cols-3 sm:gap-4">
+          {mentorPromises.map((p) => (
+            <li
+              key={p}
+              className="border-border bg-card flex items-start gap-2.5 rounded-2xl border p-4 text-sm leading-relaxed"
+            >
+              <Check className="text-gold mt-0.5 h-4 w-4 shrink-0" />
+              <span className="text-muted-foreground">{p}</span>
+            </li>
+          ))}
+        </ul>
+
+        <div className="mt-8 grid grid-cols-2 gap-4 sm:mt-12 sm:gap-5 lg:grid-cols-4">
           {mentors.map((m, i) => (
             <article key={i} className="card-premium p-5 text-center sm:p-6">
               <div className="border-gold/40 bg-secondary mx-auto grid h-16 w-16 place-items-center rounded-full border border-dashed sm:h-20 sm:w-20">
-                <UserRoundCheck className="text-muted-foreground h-6 w-6 sm:h-7 sm:w-7" strokeWidth={1.5} />
+                <UserRoundCheck
+                  className="text-muted-foreground h-6 w-6 sm:h-7 sm:w-7"
+                  strokeWidth={1.5}
+                />
               </div>
               <h3 className="mt-4 text-[0.98rem] sm:mt-5 sm:text-lg">{m.name}</h3>
-              <p className="text-muted-foreground mt-1 text-sm">{m.subject}</p>
+              <p className="text-muted-foreground mt-1 text-[0.82rem] sm:text-sm">{m.subject}</p>
               <p className="text-muted-foreground/70 mt-3 text-[0.7rem] sm:mt-4 sm:text-xs">
                 Profile details coming soon
               </p>
             </article>
           ))}
+        </div>
+
+        <div className="mt-10 flex justify-center">
+          <CtaButtons />
         </div>
       </div>
     </section>
@@ -272,22 +314,25 @@ export function Mentors() {
 }
 
 
+
 const modes = [
   {
-    icon: Wifi,
+    icon: Globe,
     title: "Online Classes",
-    availability: "Available for students anywhere",
+    availability: "Available anywhere",
+    note: "Join live from any city or country — all you need is a phone or laptop.",
     points: [
       "Live interactive sessions from home",
       "Flexible batch timings",
-      "Doubt clearing and recorded revision support",
+      "Doubt clearing and revision support",
     ],
     highlight: true,
   },
   {
     icon: MapPin,
     title: "Offline Classes",
-    availability: "Available in Calicut only",
+    availability: "Calicut only",
+    note: "In-person batches are available at our Calicut centre and nowhere else.",
     points: [
       "In-person classroom learning",
       "Face-to-face mentor guidance",
@@ -299,7 +344,10 @@ const modes = [
 
 export function Modes() {
   return (
-    <section className="border-border bg-secondary/40 border-y py-16 sm:py-20 lg:py-28">
+    <section
+      id="modes"
+      className="border-border bg-secondary/40 border-y py-16 sm:py-20 lg:py-28"
+    >
       <div className="mx-auto max-w-6xl px-5 lg:px-8">
         <SectionHeading
           eyebrow="Learning Modes"
@@ -307,38 +355,75 @@ export function Modes() {
           subtitle="Choose the format that fits your child's routine — the teaching quality stays the same."
         />
         <div className="mt-10 grid gap-4 sm:mt-14 sm:gap-5 lg:grid-cols-2">
-          {modes.map(({ icon: Icon, title, availability, points, highlight }) => (
+          {modes.map(({ icon: Icon, title, availability, note, points, highlight }) => (
             <article
               key={title}
-              className={`rounded-3xl p-7 sm:p-9 lg:p-10 ${
+              className={`flex flex-col rounded-3xl p-7 sm:p-9 lg:p-10 ${
                 highlight
                   ? "surface-navy shadow-[var(--shadow-lift)]"
                   : "border-border bg-card border shadow-[var(--shadow-soft)]"
               }`}
             >
-              <span
-                className={`grid h-12 w-12 place-items-center rounded-2xl ${
-                  highlight ? "bg-gold text-gold-foreground" : "bg-secondary text-primary"
-                }`}
-              >
-                <Icon className="h-5 w-5" strokeWidth={1.75} />
-              </span>
+              <div className="flex items-center justify-between gap-3">
+                <span
+                  className={`grid h-12 w-12 shrink-0 place-items-center rounded-2xl ${
+                    highlight ? "bg-gold text-gold-foreground" : "bg-secondary text-primary"
+                  }`}
+                >
+                  <Icon className="h-5 w-5" strokeWidth={1.75} />
+                </span>
+                <span
+                  className={`rounded-full px-3 py-1 text-[0.68rem] font-bold tracking-[0.12em] uppercase ${
+                    highlight
+                      ? "bg-gold text-gold-foreground"
+                      : "bg-accent text-accent-foreground"
+                  }`}
+                >
+                  {availability}
+                </span>
+              </div>
               <h3 className="mt-6 text-xl sm:text-2xl">{title}</h3>
               <p
-                className={`mt-2 text-sm font-medium ${highlight ? "text-gold" : "text-accent-foreground"}`}
+                className={`mt-2 text-sm leading-relaxed ${
+                  highlight ? "opacity-85" : "text-muted-foreground"
+                }`}
               >
-                {availability}
+                {note}
               </p>
               <ul className="mt-6 grid gap-3">
                 {points.map((p) => (
                   <li key={p} className="flex items-start gap-3 text-sm leading-relaxed">
-                    <Check
-                      className={`mt-0.5 h-4 w-4 shrink-0 ${highlight ? "text-gold" : "text-gold"}`}
-                    />
+                    <Check className="text-gold mt-0.5 h-4 w-4 shrink-0" />
                     <span className={highlight ? "opacity-90" : "text-muted-foreground"}>{p}</span>
                   </li>
                 ))}
               </ul>
+              <div className="mt-7 flex flex-col gap-2.5 sm:flex-row">
+                <a
+                  href="#demo"
+                  className={`inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition-transform duration-300 hover:-translate-y-0.5 ${
+                    highlight
+                      ? "bg-gold text-gold-foreground"
+                      : "bg-primary text-primary-foreground"
+                  }`}
+                >
+                  <CalendarCheck className="h-4 w-4" />
+                  Book Free Demo
+                </a>
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={`inline-flex items-center justify-center gap-2 rounded-full border px-5 py-3 text-sm font-semibold transition-colors duration-300 ${
+                    highlight
+                      ? "border-current/30 hover:border-current"
+                      : "border-border hover:border-gold hover:bg-secondary"
+                  }`}
+                >
+                  <MessageCircle className="h-4 w-4" />
+                  WhatsApp Us
+                </a>
+              </div>
             </article>
           ))}
         </div>
@@ -346,6 +431,7 @@ export function Modes() {
     </section>
   );
 }
+
 
 export function DemoCta() {
   return (
@@ -379,16 +465,21 @@ export function DemoCta() {
                 rel="noreferrer"
                 className="bg-gold text-gold-foreground inline-flex w-full items-center justify-center gap-2 rounded-full px-7 py-3.5 text-[0.95rem] font-semibold shadow-[var(--shadow-gold)] transition-transform duration-300 hover:-translate-y-0.5 sm:w-auto"
               >
-                Book Free Demo
+                <MessageCircle className="h-4 w-4" />
+                Book Free Demo on WhatsApp
               </a>
               <a
-                href={`tel:${PHONES[0].replace(/\s/g, "")}`}
+                href={tel(PHONES[0])}
                 className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-current/30 px-7 py-3.5 text-[0.95rem] font-semibold transition-colors duration-300 hover:border-current sm:w-auto"
               >
                 <Phone className="h-4 w-4" />
                 Call {PHONES[0]}
               </a>
             </div>
+            <p className="mt-5 text-[0.8rem] opacity-70">
+              Online classes anywhere · Offline classes in Calicut only
+            </p>
+
           </div>
         </div>
       </div>
@@ -398,10 +489,10 @@ export function DemoCta() {
 
 export function Contact() {
   const items = [
-    { icon: Phone, label: "Phone", value: PHONES[0], href: `tel:${PHONES[0].replace(/\s/g, "")}` },
-    { icon: Phone, label: "Phone", value: PHONES[1], href: `tel:${PHONES[1].replace(/\s/g, "")}` },
-    { icon: MapPin, label: "Offline Classes", value: "Calicut" },
-    { icon: Clock, label: "Online Classes", value: "Anywhere" },
+    { icon: Phone, label: "Call or WhatsApp", value: PHONES[0], href: tel(PHONES[0]) },
+    { icon: Phone, label: "Call or WhatsApp", value: PHONES[1], href: tel(PHONES[1]) },
+    { icon: Globe, label: "Online classes", value: "Anywhere" },
+    { icon: MapPin, label: "Offline classes", value: "Calicut only" },
   ];
 
   return (
@@ -427,7 +518,7 @@ export function Contact() {
               </>
             );
             return href ? (
-              <a key={i} href={href} className="card-premium p-6">
+              <a key={i} href={href} className="card-premium block p-6">
                 {inner}
               </a>
             ) : (
@@ -444,6 +535,7 @@ export function Contact() {
     </section>
   );
 }
+
 
 
 export function Footer() {
