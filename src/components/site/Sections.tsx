@@ -27,78 +27,103 @@ import { CtaButtons, SectionHeading, PHONES, WHATSAPP_URL } from "./Cta";
 
 export function Hero() {
   return (
-    <section id="home" className="relative overflow-hidden pt-28 pb-16 sm:pt-36 lg:pb-24">
+    <section id="home" className="relative overflow-hidden pt-24 pb-14 sm:pt-32 lg:pt-36 lg:pb-24">
+      <div aria-hidden className="page-glow pointer-events-none absolute inset-0" />
       <div
         aria-hidden
-        className="bg-accent/60 pointer-events-none absolute -top-32 -right-24 h-80 w-80 rounded-full blur-3xl"
+        className="bg-gold/10 pointer-events-none absolute top-24 -left-40 h-96 w-96 rounded-full blur-3xl"
       />
-      <div
-        aria-hidden
-        className="bg-gold/15 pointer-events-none absolute top-40 -left-32 h-96 w-96 rounded-full blur-3xl"
-      />
-      <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-5 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:px-8">
-        <div className="reveal">
-          <span className="border-border bg-card text-muted-foreground inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-xs font-medium tracking-wide">
+
+      <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-5 lg:grid-cols-[1.08fr_1fr] lg:gap-14 lg:px-8">
+        <div className="reveal text-center lg:text-left">
+          <span className="border-border bg-card/80 inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-[0.7rem] font-semibold tracking-[0.16em] uppercase backdrop-blur">
             <Sparkles className="text-gold h-3.5 w-3.5" />
             Learn. Understand. Excel.
           </span>
 
-          <h1 className="mt-6 text-4xl leading-[1.08] sm:text-5xl lg:text-6xl">
+          <h1 className="mt-6 text-[2.15rem] leading-[1.06] font-semibold sm:text-5xl lg:text-[3.6rem]">
             Expert Guidance.
             <br />
             <span className="text-gold-gradient">Better Learning.</span>
           </h1>
 
-          <p className="text-muted-foreground mt-6 max-w-xl text-base leading-relaxed sm:text-lg">
+          <p className="text-muted-foreground mx-auto mt-5 max-w-xl text-[1rem] leading-relaxed sm:text-lg lg:mx-0">
             Live online tuition with expert mentors, personal attention and exam-focused learning.
           </p>
 
-          <div className="mt-7 flex flex-wrap gap-2.5">
+          <div className="mt-7 flex flex-wrap justify-center gap-2 lg:justify-start">
             {["Classes 1–10", "Plus One", "Plus Two"].map((c) => (
               <span
                 key={c}
-                className="border-border bg-card rounded-full border px-4 py-2 text-sm font-medium"
+                className="border-border bg-card rounded-full border px-3.5 py-1.5 text-[0.8rem] font-semibold sm:text-sm"
               >
                 {c}
               </span>
             ))}
-          </div>
-          <div className="mt-3 flex flex-wrap gap-2.5">
             {["Kerala State Board", "CBSE"].map((c) => (
               <span
                 key={c}
-                className="bg-accent text-accent-foreground rounded-full px-4 py-2 text-sm font-medium"
+                className="bg-accent text-accent-foreground rounded-full px-3.5 py-1.5 text-[0.8rem] font-semibold sm:text-sm"
               >
                 {c}
               </span>
             ))}
           </div>
 
-          <div className="mt-9">
+          <div className="mt-8 flex justify-center lg:justify-start">
             <CtaButtons />
           </div>
+
+          <dl className="border-border mt-10 grid grid-cols-3 gap-3 border-t pt-6 text-center lg:text-left">
+            {[
+              { k: "Live", v: "Interactive classes" },
+              { k: "1–12", v: "Classes covered" },
+              { k: "Free", v: "First demo class" },
+            ].map((s) => (
+              <div key={s.k}>
+                <dt className="text-gold text-lg font-bold sm:text-xl">{s.k}</dt>
+                <dd className="text-muted-foreground mt-0.5 text-[0.72rem] leading-snug sm:text-xs">
+                  {s.v}
+                </dd>
+              </div>
+            ))}
+          </dl>
         </div>
 
-        <div className="reveal relative">
-          <div className="border-border overflow-hidden rounded-[2rem] border shadow-[var(--shadow-lift)]">
-            <img
-              src={heroImage}
-              alt="Student desk set up for a live online PrimeAura Academy class"
-              width={1280}
-              height={1280}
-              className="h-full w-full object-cover"
+        <div className="reveal relative mx-auto w-full max-w-md lg:max-w-none">
+          <div className="surface-navy relative overflow-hidden rounded-[2rem] p-6 shadow-[var(--shadow-lift)] sm:p-8">
+            <div
+              aria-hidden
+              className="bg-gold/20 pointer-events-none absolute -top-16 -right-10 h-52 w-52 rounded-full blur-3xl"
             />
+            <div className="relative rounded-[1.5rem] bg-white/95 p-4 sm:p-6">
+              <img
+                src={heroIllustration}
+                alt="Illustration of a book, graduation cap, compass, atom and progress graph"
+                width={1024}
+                height={1024}
+                className="float-slow mx-auto h-auto w-full"
+              />
+            </div>
+            <div className="relative mt-5 flex items-center justify-between gap-3">
+              <p className="text-sm font-semibold">Online & offline batches</p>
+              <span className="bg-gold text-gold-foreground rounded-full px-3 py-1 text-[0.7rem] font-bold tracking-wide uppercase">
+                Enrolling
+              </span>
+            </div>
           </div>
-          <div className="border-border bg-card absolute -bottom-6 left-4 rounded-2xl border p-4 shadow-[var(--shadow-soft)] sm:left-8">
-            <p className="text-muted-foreground text-[0.7rem] font-semibold tracking-[0.18em] uppercase">
-              Free
+
+          <div className="border-border bg-card absolute -bottom-5 left-2 rounded-2xl border p-3.5 shadow-[var(--shadow-soft)] sm:left-6 sm:p-4">
+            <p className="eyebrow">Free</p>
+            <p className="mt-1 text-[0.82rem] font-semibold sm:text-sm">
+              Demo class for every new student
             </p>
-            <p className="mt-1 text-sm font-semibold">Demo class for every new student</p>
           </div>
         </div>
       </div>
     </section>
   );
+
 }
 
 const reasons = [
