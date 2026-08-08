@@ -200,7 +200,11 @@ export function WhyChoose() {
             </article>
           ))}
         </div>
+        <div className="mt-10 flex justify-center">
+          <CtaButtons />
+        </div>
       </div>
+
     </section>
   );
 }
