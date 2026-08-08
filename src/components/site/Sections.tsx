@@ -297,17 +297,18 @@ const modes = [
 
 export function Modes() {
   return (
-    <section className="bg-secondary/50 py-20 lg:py-28">
+    <section className="border-border bg-secondary/40 border-y py-16 sm:py-20 lg:py-28">
       <div className="mx-auto max-w-6xl px-5 lg:px-8">
         <SectionHeading
           eyebrow="Learning Modes"
           title="Online anywhere. Offline in Calicut."
+          subtitle="Choose the format that fits your child's routine — the teaching quality stays the same."
         />
-        <div className="mt-14 grid gap-5 lg:grid-cols-2">
+        <div className="mt-10 grid gap-4 sm:mt-14 sm:gap-5 lg:grid-cols-2">
           {modes.map(({ icon: Icon, title, availability, points, highlight }) => (
             <article
               key={title}
-              className={`rounded-3xl p-8 sm:p-10 ${
+              className={`rounded-3xl p-7 sm:p-9 lg:p-10 ${
                 highlight
                   ? "surface-navy shadow-[var(--shadow-lift)]"
                   : "border-border bg-card border shadow-[var(--shadow-soft)]"
@@ -320,15 +321,17 @@ export function Modes() {
               >
                 <Icon className="h-5 w-5" strokeWidth={1.75} />
               </span>
-              <h3 className="mt-6 text-2xl">{title}</h3>
-              <p className={`mt-2 text-sm ${highlight ? "text-gold" : "text-muted-foreground"}`}>
+              <h3 className="mt-6 text-xl sm:text-2xl">{title}</h3>
+              <p
+                className={`mt-2 text-sm font-medium ${highlight ? "text-gold" : "text-accent-foreground"}`}
+              >
                 {availability}
               </p>
               <ul className="mt-6 grid gap-3">
                 {points.map((p) => (
                   <li key={p} className="flex items-start gap-3 text-sm leading-relaxed">
                     <Check
-                      className={`mt-0.5 h-4 w-4 shrink-0 ${highlight ? "text-gold" : "text-accent-foreground"}`}
+                      className={`mt-0.5 h-4 w-4 shrink-0 ${highlight ? "text-gold" : "text-gold"}`}
                     />
                     <span className={highlight ? "opacity-90" : "text-muted-foreground"}>{p}</span>
                   </li>
@@ -344,36 +347,41 @@ export function Modes() {
 
 export function DemoCta() {
   return (
-    <section id="demo" className="py-20 lg:py-28">
+    <section id="demo" className="py-16 sm:py-20 lg:py-28">
       <div className="mx-auto max-w-6xl px-5 lg:px-8">
-        <div className="surface-navy relative overflow-hidden rounded-[2rem] px-6 py-14 text-center sm:px-12 lg:py-20">
+        <div className="surface-navy relative overflow-hidden rounded-[1.75rem] px-6 py-12 text-center sm:rounded-[2rem] sm:px-12 sm:py-16 lg:py-20">
           <div
             aria-hidden
             className="bg-gold/20 pointer-events-none absolute -top-20 -right-16 h-72 w-72 rounded-full blur-3xl"
           />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -bottom-24 -left-20 h-72 w-72 rounded-full bg-white/5 blur-3xl"
+          />
           <div className="relative mx-auto max-w-2xl">
-            <p className="text-gold text-xs font-semibold tracking-[0.22em] uppercase">
+            <p className="text-gold text-[0.7rem] font-bold tracking-[0.22em] uppercase">
               Free Demo Class
             </p>
-            <h2 className="mt-5 text-3xl leading-tight sm:text-4xl lg:text-5xl">
+            <div className="rule-gold mx-auto mt-4" />
+            <h2 className="mt-5 text-[1.9rem] leading-tight sm:text-4xl lg:text-5xl">
               See the difference in one class
             </h2>
-            <p className="mt-5 text-base leading-relaxed opacity-85">
+            <p className="mx-auto mt-5 max-w-xl text-[0.95rem] leading-relaxed opacity-85 sm:text-base">
               Book a free demo class for your child — no fees, no commitment. Meet the mentor,
               experience a live session and decide with confidence.
             </p>
-            <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:mt-9 sm:flex-row">
               <a
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noreferrer"
-                className="bg-gold text-gold-foreground inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3.5 text-[0.95rem] font-semibold transition-transform duration-300 hover:-translate-y-0.5 sm:w-auto"
+                className="bg-gold text-gold-foreground inline-flex w-full items-center justify-center gap-2 rounded-full px-7 py-3.5 text-[0.95rem] font-semibold shadow-[var(--shadow-gold)] transition-transform duration-300 hover:-translate-y-0.5 sm:w-auto"
               >
                 Book Free Demo
               </a>
               <a
                 href={`tel:${PHONES[0].replace(/\s/g, "")}`}
-                className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-current/30 px-6 py-3.5 text-[0.95rem] font-semibold transition-colors duration-300 hover:border-current sm:w-auto"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-current/30 px-7 py-3.5 text-[0.95rem] font-semibold transition-colors duration-300 hover:border-current sm:w-auto"
               >
                 <Phone className="h-4 w-4" />
                 Call {PHONES[0]}
@@ -387,42 +395,45 @@ export function DemoCta() {
 }
 
 export function Contact() {
+  const items = [
+    { icon: Phone, label: "Phone", value: PHONES[0], href: `tel:${PHONES[0].replace(/\s/g, "")}` },
+    { icon: Phone, label: "Phone", value: PHONES[1], href: `tel:${PHONES[1].replace(/\s/g, "")}` },
+    { icon: MapPin, label: "Offline Classes", value: "Calicut" },
+    { icon: Clock, label: "Online Classes", value: "Anywhere" },
+  ];
+
   return (
-    <section id="contact" className="bg-secondary/50 py-20 lg:py-28">
+    <section
+      id="contact"
+      className="border-border bg-secondary/40 border-t py-16 sm:py-20 lg:py-28"
+    >
       <div className="mx-auto max-w-6xl px-5 lg:px-8">
         <SectionHeading
           eyebrow="Contact"
           title="Talk to us today"
           subtitle="Call or message us on WhatsApp — we'll help you choose the right batch and mentor."
         />
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {PHONES.map((p) => (
-            <a key={p} href={`tel:${p.replace(/\s/g, "")}`} className="card-premium p-6">
-              <span className="bg-accent grid h-11 w-11 place-items-center rounded-xl">
-                <Phone className="text-accent-foreground h-5 w-5" strokeWidth={1.75} />
-              </span>
-              <p className="text-muted-foreground mt-5 text-xs tracking-[0.18em] uppercase">Phone</p>
-              <p className="mt-1 text-lg font-semibold">{p}</p>
-            </a>
-          ))}
-          <div className="card-premium p-6">
-            <span className="bg-accent grid h-11 w-11 place-items-center rounded-xl">
-              <MapPin className="text-accent-foreground h-5 w-5" strokeWidth={1.75} />
-            </span>
-            <p className="text-muted-foreground mt-5 text-xs tracking-[0.18em] uppercase">
-              Offline Classes
-            </p>
-            <p className="mt-1 text-lg font-semibold">Calicut</p>
-          </div>
-          <div className="card-premium p-6">
-            <span className="bg-accent grid h-11 w-11 place-items-center rounded-xl">
-              <Clock className="text-accent-foreground h-5 w-5" strokeWidth={1.75} />
-            </span>
-            <p className="text-muted-foreground mt-5 text-xs tracking-[0.18em] uppercase">
-              Online Classes
-            </p>
-            <p className="mt-1 text-lg font-semibold">Anywhere</p>
-          </div>
+        <div className="mt-10 grid gap-4 sm:mt-14 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4">
+          {items.map(({ icon: Icon, label, value, href }, i) => {
+            const inner = (
+              <>
+                <span className="bg-accent grid h-11 w-11 place-items-center rounded-xl">
+                  <Icon className="text-accent-foreground h-5 w-5" strokeWidth={1.75} />
+                </span>
+                <p className="eyebrow mt-5">{label}</p>
+                <p className="mt-1 text-[1.05rem] font-semibold sm:text-lg">{value}</p>
+              </>
+            );
+            return href ? (
+              <a key={i} href={href} className="card-premium p-6">
+                {inner}
+              </a>
+            ) : (
+              <div key={i} className="card-premium p-6">
+                {inner}
+              </div>
+            );
+          })}
         </div>
         <div className="mt-10 flex justify-center">
           <CtaButtons />
@@ -431,6 +442,7 @@ export function Contact() {
     </section>
   );
 }
+
 
 export function Footer() {
   return (
