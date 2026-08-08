@@ -62,7 +62,11 @@ export function Navbar() {
               </li>
             ))}
           </ul>
-          <CtaButtons size="sm" only="demo" />
+          <div className="flex items-center gap-2.5">
+            <CtaButtons size="sm" only="whatsapp" />
+            <CtaButtons size="sm" only="demo" />
+          </div>
+
         </div>
 
         <button
