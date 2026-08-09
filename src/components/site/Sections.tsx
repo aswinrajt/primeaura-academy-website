@@ -253,12 +253,14 @@ export function Classes() {
   );
 }
 
+/*
 const mentors = [
   { name: "Mentor Name", subject: "Subject · Classes" },
   { name: "Mentor Name", subject: "Subject · Classes" },
   { name: "Mentor Name", subject: "Subject · Classes" },
   { name: "Mentor Name", subject: "Subject · Classes" },
 ];
+*/
 
 const mentorPromises = [
   "Every class is taken by a subject mentor, not a substitute",
@@ -288,6 +290,7 @@ export function Mentors() {
           ))}
         </ul>
 
+        {/* Mentor profile cards — hidden until real mentor details are ready
         <div className="mt-8 grid grid-cols-2 gap-4 sm:mt-12 sm:gap-5 lg:grid-cols-4">
           {mentors.map((m, i) => (
             <article key={i} className="card-premium p-5 text-center sm:p-6">
@@ -305,6 +308,7 @@ export function Mentors() {
             </article>
           ))}
         </div>
+        */}
 
         <div className="mt-10 flex justify-center">
           <CtaButtons />
